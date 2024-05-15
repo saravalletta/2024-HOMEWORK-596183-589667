@@ -26,6 +26,7 @@ public class Attrezzo {
 		this.peso = peso;
 		this.nome = nome;
 	}
+	
 
 	/**
 	 * Restituisce il nome identificatore dell'attrezzo

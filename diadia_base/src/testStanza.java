@@ -40,16 +40,6 @@ public class testStanza{
 	}
 	
 	@Test
-	public void test4ImpostaStanzaAdiacente() {
-		String direzione1 = "direzione1";
-		String direzione2 = "direzione2";
-		stanza2.impostaStanzaAdiacente(direzione1, stanza1);
-		stanza2.impostaStanzaAdiacente(direzione2, stanza1);
-		assertNotSame(stanza2.getStanzaAdiacente(direzione1),stanza2.getStanzaAdiacente(direzione2));
-		
-	}
-	
-	@Test
 	public void test1AddAttrezzo() {
 		assertTrue(stanza1.addAttrezzo(attrezzo1));
 		assertTrue(stanza1.hasAttrezzo("attrezzo1"));
@@ -119,5 +109,17 @@ public class testStanza{
 	public void test4HasAttrezzo() {
 		stanza1.addAttrezzo(attrezzo1);
 		assertFalse(stanza1.hasAttrezzo("attrezzo2"));
+	}
+	
+	@Test
+	public void testGetStanzaAdiacente() {
+		assertNull(stanza1.getStanzaAdiacente("sud"));
+	}
+	
+
+	@Test
+	public void testImpostaStanzaAdiacente() {
+		stanza1.impostaStanzaAdiacente("sud", stanza2);
+		assertEquals(stanza2, stanza1.getStanzaAdiacente("sud"));
 	}
 }

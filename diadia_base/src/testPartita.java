@@ -7,67 +7,49 @@ import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.ambienti.Stanza;
+
 public class testPartita {
-	Partita partita = new Partita();
-	Labirinto labirinto = new Labirinto();
-	Giocatore giocatore = new Giocatore();
-	Stanza stanzaTest1 = new Stanza("Stanza1");
-	Stanza stanzaTest2 = new Stanza("Stanza2");
+
+	Labirinto labirinto;  
+	Partita p;
+	Stanza s;
+
+	@Before
+	public void setUp() {
+		 labirinto = new LabirintoBuilder()
+				.addStanzaIniziale("Atrio")
+				.addAttrezzo("martello", 3)
+				.addStanzaVincente("Biblioteca")
+				.addAdiacenza("Atrio", "Biblioteca", "nord")
+				.getLabirinto();
+		 p = new Partita(labirinto);
+		 s = new Stanza("Stanza");
+	}
+	
+	@Test
+	public void testGetStanzaVincente() {
+		assertEquals("Biblioteca", p.getLabirinto().getStanzaVincente().getNome());
+	}
 
 	@Test
 	public void testSetStanzaCorrente() {
-		partita.setStanzaCorrente(stanzaTest1);
-		assertEquals(stanzaTest1, partita.getStanzaCorrente());
+		p.getLabirinto().setStanzaIniziale(s);
+		assertEquals(s, p.getLabirinto().getStanzaIniziale());
+	}
+
+	@Test
+	public void testIsFinita() {
+		
+		assertFalse(p.isFinita());
 	}
 	
-	@Test
-	public void testSetStanzaCorrenteSbagliata() {
-		partita.setStanzaCorrente(stanzaTest1);
-		assertNotEquals(stanzaTest2, partita.getStanzaCorrente());
-	}
-	
-	@Test
-	public void testSetStanzaCorrenteVuota() {
-		partita.setStanzaCorrente(null);
-		assertNull(partita.getStanzaCorrente());
-	}
-	
-	@Test
-	public void testVinta() { 
-		labirinto.creaStanze();
-		Stanza stanzaWin = labirinto.getStanzaVincente();
-		labirinto.setStanzaVincente(stanzaWin); 
-		partita.setStanzaCorrente(stanzaWin);
-		assertTrue(partita.vinta()); 
-	}
-	
-	@Test
-	public void testVintaFalso() {
-		labirinto.creaStanze();
-		partita.setStanzaCorrente(stanzaTest1);
-		assertFalse(partita.vinta());
-	}
-	
-	@Test
-	public void testVintaNullo() {
-		labirinto.creaStanze();
-		partita.setStanzaCorrente(null);
-		assertFalse(partita.vinta());
-	}
-	
-	@Test
-	public void testIsFinita1() {
-		partita.setFinita();
-		assertTrue(partita.isFinita());
-	}
-	
-	@Test
-	public void testIsFinitaNonNullo() { 
-		assertNotNull(partita.isFinita());
-	}
-	
-	@Test
-	public void testIsFinitaFalso() {
-		assertFalse(partita.isFinita());
-	}
 }
