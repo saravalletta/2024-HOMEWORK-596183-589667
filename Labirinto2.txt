@@ -1,0 +1,11 @@
+Stanze:Biblioteca,DS1,N11,Atrio,Segreteria
+Magica:Campus,N9
+Buia:N10 lanterna,Giardino torcia
+Bloccata: N12 sud chiave, DS1 sud levachiodi
+Inizio:Atrio
+Vincente:Biblioteca
+Mago:Giardino Mago levachiodi Ciao! Ho un regalo per te
+Cane:N9 Cane Bau! Dammi un osso per favore
+Strega:Segreteria Strega Cosa vuoi?
+Attrezzi: lanterna 5 Segreteria, torcia 3 N9, osso 4 Campus, chiave 8 N10
+Uscite:Atrio nord Segreteria, Segreteria sud Atrio, Atrio est N10, N10 ovest Atrio, N10 sud N11, N11 nord N10, N11 ovest DS1, DS1 est N11, Atrio sud DS1, DS1 nord Atrio, Segreteria ovest N9, N9 est Segreteria, N11 est Giardino, Giardino ovest N11, Atrio ovest Campus, Campus est Atrio, Campus nord N9, N9 sud Campus, DS1 sud N12, N12 nord DS1, N12 sud Biblioteca, Biblioteca nord N12 
